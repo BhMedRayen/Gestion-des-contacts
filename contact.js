@@ -3,14 +3,6 @@ let NVContact = [];
 let id=0;
 document.getElementById('ContactForm').addEventListener("submit", function(event) {
   event.preventDefault();
-  if(verifNom()===false)
-  {
-    alert('les champs doit etre alphabetique')
-   
-  }
-  else 
-  {
-    
   let nom = document.getElementsByName('nom')[0].value;
   let prenom = document.getElementsByName('prenom')[0].value;
   let mail = document.getElementsByName('mail')[0].value;
@@ -48,7 +40,7 @@ document.getElementById('ContactForm').addEventListener("submit", function(event
   Ajout avec succes
 </div>`;
 resetForm();
-}});
+});
 function resetForm()
 {
     document.getElementById('ContactForm').reset();
@@ -91,22 +83,35 @@ function afficher ()
 }
 function deleteContact(ContactId)
 {
+  Swal.fire({
+    title: 'Confirmation',
+    text: 'Êtes-vous sûr de vouloir supprimer cet élément ?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Oui, supprimer',
+    cancelButtonText: 'Annuler'}).then( (result)=> {if(result.isConfirmed)
+       {
+        let ContactString=localStorage.getItem('contact');
+        let TBContact=JSON.parse(ContactString);
+        let i=-1;
+        for(let contact of TBContact)
+        {
+            i+=1;
+            let id=parseInt(contact.ID);
+            if(ContactId==id)
+             {
+                TBContact.splice(i,1)
+                let con=JSON.stringify(TBContact);
+                localStorage.setItem('contact',con);
+             }
+             Swal.fire('Supprimé', 'L\'élément a été supprimé avec succès.', 'success');
+             afficher();
+        }
+    }})
    
-    let ContactString=localStorage.getItem('contact');
-    let TBContact=JSON.parse(ContactString);
-    let i=-1;
-    for(let contact of TBContact)
-    {
-        i+=1;
-        let id=parseInt(contact.ID);
-        if(ContactId==id)
-         {
-            TBContact.splice(i,1)
-            let con=JSON.stringify(TBContact);
-            localStorage.setItem('contact',con);
-         }
-    }
-    afficher();
+   
 }
 function existe(id) {
     let ContactString = localStorage.getItem('contact');
