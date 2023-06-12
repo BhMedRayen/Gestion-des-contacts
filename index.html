@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+
+    <title>Contact</title>
+</head>
+<body>
+    <div class="container">
+     <div class="container text-center">
+        <div class="row">
+          <div class="col">
+            <div class="shadow-none p-3 mb-5 bg-body-tertiary rounded">
+
+            <form id="ContactForm">
+              <div class="alerte" id="alert"></div>
+                <div class="mb-3">
+                    <label for="exampleInputName" class="form-label">Nom</label>
+                    <input type="text" name="nom" class="form-control" id="nom" aria-describedby="nameHelp">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputName" class="form-label">Prenom</label>
+                    <input type="text" name="prenom"  class="form-control" id="Prenom" aria-describedby="nameHelp">
+                  </div>
+
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" name="mail" class="form-control" id="mail" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+              
+                <div class="mb-3">
+                    <label for="exampleInputName"  class="form-label">NumCin</label>
+                    <input type="number" class="form-control" name="cin" id="cin" aria-describedby="nameHelp">
+                  </div>
+                  <label for="Genre" class="form-label">Genre</label>
+                  <div>
+                    <input class="form-check-input"  type="radio" name="genre" value="homme" id="homme">
+                    <label class="form-check-label ml-4" for="flexRadioDefault1">
+                      Homme
+                    </label>
+                  </div>
+                  <div class="">
+                    <input class="form-check-input" type="radio" name="genre" value="femme" id="femme" checked>
+                    <label class="form-check-label ml-4" for="flexRadioDefault2">
+                      Femme
+                    </label>
+                  </div>
+                  <br>
+                <button type="submit" class="btn btn-success m-2">Ajouter</button>
+                <button type="reset" class="btn btn-danger m-2" >Annuler</button>
+              </form>
+            </div>
+          </div>
+          <div class="col">
+            <div class="container text-center">
+              <div class="row" id="card">
+                  <!-- <div class="col">
+                     <div class="card mb-4" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">Contact</h5>
+                           <h6>Nom</h6>
+                           <p>Ben Hassine</p>
+                           <h6>Prenom</h6>
+                           <p>Mohamed Rayen</p>
+                           <h6>Email</h6>
+                           <p>rayenmohamed2310@gmail.com</p>
+                           <h6>NumCin</h6>
+                           <p>11437263</p>
+                            <h6>Genre</h6>
+                            <p>Homme</p>
+                            <button type="submit" class="btn btn-warning m-2">Modifier</button>
+                            <button type="reset" class="btn btn-danger m-2">Supprimer</button>
+                        </div>
+                      </div>  -->
+                  </div> 
+                </div>
+              </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+
+</body>
+<script src="contact.js"></script>
+</html>
