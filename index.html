@@ -20,34 +20,34 @@
             <form id="ContactForm">
               <div class="alerte" id="alert"></div>
                 <div class="mb-3">
-                    <label for="exampleInputName" class="form-label">Nom</label>
-                    <input type="text" name="nom" class="form-control" id="nom" aria-describedby="nameHelp">
+                    <label for="exampleInputName" class="form-label" >Nom</label>
+                    <input type="text" name="nom" class="form-control" id="nom" aria-describedby="nameHelp" required> 
                   </div>
 
                   <div class="mb-3">
                     <label for="exampleInputName" class="form-label">Prenom</label>
-                    <input type="text" name="prenom"  class="form-control" id="Prenom" aria-describedby="nameHelp">
+                    <input type="text" name="prenom"  class="form-control" id="Prenom" aria-describedby="nameHelp" required>
                   </div>
 
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Email address</label>
-                  <input type="email" name="mail" class="form-control" id="mail" aria-describedby="emailHelp">
+                  <input type="email" name="mail" class="form-control" id="mail" aria-describedby="emailHelp" required>
                   <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
               
                 <div class="mb-3">
                     <label for="exampleInputName"  class="form-label">NumCin</label>
-                    <input type="number" class="form-control" name="cin" id="cin" aria-describedby="nameHelp">
+                    <input type="number" class="form-control" name="cin" id="cin" aria-describedby="nameHelp" required>
                   </div>
                   <label for="Genre" class="form-label">Genre</label>
                   <div>
-                    <input class="form-check-input"  type="radio" name="genre" value="homme" id="homme">
+                    <input class="form-check-input"  type="radio" name="genre" value="homme" id="homme" required>
                     <label class="form-check-label ml-4" for="flexRadioDefault1">
                       Homme
                     </label>
                   </div>
                   <div class="">
-                    <input class="form-check-input" type="radio" name="genre" value="femme" id="femme" checked>
+                    <input class="form-check-input" type="radio" name="genre" value="femme" id="femme" checked required>
                     <label class="form-check-label ml-4" for="flexRadioDefault2">
                       Femme
                     </label>

@@ -3,6 +3,14 @@ let NVContact = [];
 let id=0;
 document.getElementById('ContactForm').addEventListener("submit", function(event) {
   event.preventDefault();
+  if(verifNom()===false)
+  {
+    alert('les champs doit etre alphabetique')
+   
+  }
+  else 
+  {
+    
   let nom = document.getElementsByName('nom')[0].value;
   let prenom = document.getElementsByName('prenom')[0].value;
   let mail = document.getElementsByName('mail')[0].value;
@@ -20,6 +28,7 @@ document.getElementById('ContactForm').addEventListener("submit", function(event
   {
     id+=1;
   }
+
   let NVContact = {
         ID :id,
         nom: nom,
@@ -28,11 +37,7 @@ document.getElementById('ContactForm').addEventListener("submit", function(event
         cin: cin,
         genre: g,
       };
-  
- 
-  
-  
- 
+
   TableauContactStocke.push(NVContact);
   let CNCT = JSON.stringify(TableauContactStocke);
   localStorage.setItem("contact", CNCT);
@@ -43,7 +48,7 @@ document.getElementById('ContactForm').addEventListener("submit", function(event
   Ajout avec succes
 </div>`;
 resetForm();
-});
+}});
 function resetForm()
 {
     document.getElementById('ContactForm').reset();
@@ -115,4 +120,16 @@ function existe(id) {
     }
     return false;
   }
-  
+
+function verifNom() {
+    let nom = document.getElementById('nom').value;
+    for (let i = 0; i < nom.length; i++) {
+        let majus = nom[i].toUpperCase();
+        let charCode = majus.charCodeAt(0);
+        if (charCode < 65 || charCode > 90 || charCode !== 32) {
+            return false; 
+        }
+    }
+    return true; 
+ }
+ 
