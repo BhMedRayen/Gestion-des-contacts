@@ -129,7 +129,7 @@ function existe(id) {
   }
 
 function verifNom() {
-    let nom = document.getElementById('nom').value;
+    let nom =document.getElementsByName('nom')[0].value;
     for (let i = 0; i < nom.length; i++) {
         let majus = nom[i].toUpperCase();
         let charCode = majus.charCodeAt(0);
@@ -141,68 +141,97 @@ function verifNom() {
  }
  
  function update(id)
- {
-      let div=document.getElementById('update');
-      div.style.display='flex';
-      div.style.left="25";
-      let form=document.getElementById('ContactForm');
-      let card=document.getElementById('card');
-      let col=document.getElementById('col');
-      col.style.display='none';
-      form.style.display='none';
-      card.style.display='none';
-      div.innerHTML=`<div class="shadow-none p-3 mb-5 bg-body-tertiary rounded">
-      <form id="ContactForm">
-        <div class="alerte" id="alert"></div>
-          <div class="mb-3">
-              <label for="exampleInputName" class="form-label" >Nom</label>
-              <input type="text" name="nom" class="form-control" id="nom" aria-describedby="nameHelp" required> 
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputName" class="form-label">Prenom</label>
-              <input type="text" name="prenom"  class="form-control" id="Prenom" aria-describedby="nameHelp" required>
-            </div>
+ {    let ContactString=localStorage.getItem('contact');
+      let TBContact=JSON.parse(ContactString)
+      if(Array.isArray(TBContact))
+      {
+        for(let contact of TBContact)
+        {
+          nom=contact.nom;
+          prenom=contact.prenom;
+          mail=contact.mail;
+          cin=contact.cin;
+          genre=contact.genre;
+          let div=document.getElementById('update');
+          div.style.display='flex';
+          div.style.left="25";
+          let form=document.getElementById('ContactForm');
+          let card=document.getElementById('card');
+          let col=document.getElementById('col');
+          col.style.display='none';
+          form.style.display='none';
+          card.style.display='none';
+          div.innerHTML=`<div class="shadow-none p-3 mb-5 bg-body-tertiary rounded">
+          <form id="ContactForm">
+            <div class="alerte" id="alert"></div>
+              <div class="mb-3">
+                  <label for="exampleInputName" class="form-label" >Nom</label>
+                  <input type="text" name="nom" class="form-control" id="nom" aria-describedby="nameHelp" required> 
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputName" class="form-label">Prenom</label>
+                  <input type="text" name="prenom"  class="form-control" id="Prenom" aria-describedby="nameHelp" required>
+                </div>
+    
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" name="mail" class="form-control" id="mail" aria-describedby="emailHelp" required>
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+            
+              <div class="mb-3">
+                  <label for="exampleInputName"  class="form-label">NumCin</label>
+                  <input type="number" class="form-control" name="cin" id="cin" aria-describedby="nameHelp" required>
+                </div>
+                <div class="genre">
+                <label for="Genre" class="form-label">Genre</label>
+                <div>
+                  <input class="form-check-input"  type="radio" name="genre" value="homme" id="homme" required>
+                  <label class="form-check-label ml-4" for="flexRadioDefault1">
+                    Homme
+                  </label>
+                </div>
+                <div class="">
+                  <input class="form-check-input" type="radio" name="genre" value="femme" id="femme" checked required>
+                  <label class="form-check-label ml-4" for="flexRadioDefault2">
+                    Femme
+                  </label>
+                </div>
+                </div>
+                <br>
+                <div class="butto">
+              <button type="submit" class="btn btn-success m-2" id="ajout">Ajouter</button>
+              <button type="reset" class="btn btn-danger m-2" id="annuler" >Annuler</button>
+              </div>
+            </form>
+          </div>`
+          document.getElementsByName('nom')[0].value=nom;
+          document.getElementsByName('prenom')[0].value=prenom;
+          document.getElementsByName('mail')[0].value=mail;
+          document.getElementsByName('cin')[0].value=cin;
+          if(genre=="homme")
+          {
+             document.getElementsByName('genre')[0].checked=true
+            
+          }
+          else 
+          {
+            document.getElementsByName('genre')[1].checked=true;
+          }
+          console.log(document.getElementsByName('mail')[0].value)
+          
+          document.getElementById('annuler').addEventListener('click',function() {
+            let form=document.getElementById('ContactForm');
+            let card=document.getElementById('card');
+            let col=document.getElementById('col');
+            let div=document.getElementById('update');
+            div.style.display=null;
+            col.style.display=null;
+            form.style.display=null;
+            card.style.display=null;
+          })
 
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" name="mail" class="form-control" id="mail" aria-describedby="emailHelp" required>
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-          </div>
-        
-          <div class="mb-3">
-              <label for="exampleInputName"  class="form-label">NumCin</label>
-              <input type="number" class="form-control" name="cin" id="cin" aria-describedby="nameHelp" required>
-            </div>
-            <div class="genre">
-            <label for="Genre" class="form-label">Genre</label>
-            <div>
-              <input class="form-check-input"  type="radio" name="genre" value="homme" id="homme" required>
-              <label class="form-check-label ml-4" for="flexRadioDefault1">
-                Homme
-              </label>
-            </div>
-            <div class="">
-              <input class="form-check-input" type="radio" name="genre" value="femme" id="femme" checked required>
-              <label class="form-check-label ml-4" for="flexRadioDefault2">
-                Femme
-              </label>
-            </div>
-            </div>
-            <br>
-            <div class="butto">
-          <button type="submit" class="btn btn-success m-2" id="ajout">Ajouter</button>
-          <button type="reset" class="btn btn-danger m-2" id="annuler" >Annuler</button>
-          </div>
-        </form>
-      </div>`
-      document.getElementById('annuler').addEventListener('click',function() {
-        let form=document.getElementById('ContactForm');
-        let card=document.getElementById('card');
-        let col=document.getElementById('col');
-        let div=document.getElementById('update');
-        div.style.display=null;
-        col.style.display=null;
-        form.style.display=null;
-        card.style.display=null;
-      })
+        }
+      }
+     
  }
