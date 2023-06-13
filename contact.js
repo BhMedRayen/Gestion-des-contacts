@@ -140,4 +140,69 @@ function verifNom() {
     return true; 
  }
  
- 
+ function update(id)
+ {
+      let div=document.getElementById('update');
+      div.style.display='flex';
+      div.style.left="25";
+      let form=document.getElementById('ContactForm');
+      let card=document.getElementById('card');
+      let col=document.getElementById('col');
+      col.style.display='none';
+      form.style.display='none';
+      card.style.display='none';
+      div.innerHTML=`<div class="shadow-none p-3 mb-5 bg-body-tertiary rounded">
+      <form id="ContactForm">
+        <div class="alerte" id="alert"></div>
+          <div class="mb-3">
+              <label for="exampleInputName" class="form-label" >Nom</label>
+              <input type="text" name="nom" class="form-control" id="nom" aria-describedby="nameHelp" required> 
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputName" class="form-label">Prenom</label>
+              <input type="text" name="prenom"  class="form-control" id="Prenom" aria-describedby="nameHelp" required>
+            </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" name="mail" class="form-control" id="mail" aria-describedby="emailHelp" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+        
+          <div class="mb-3">
+              <label for="exampleInputName"  class="form-label">NumCin</label>
+              <input type="number" class="form-control" name="cin" id="cin" aria-describedby="nameHelp" required>
+            </div>
+            <div class="genre">
+            <label for="Genre" class="form-label">Genre</label>
+            <div>
+              <input class="form-check-input"  type="radio" name="genre" value="homme" id="homme" required>
+              <label class="form-check-label ml-4" for="flexRadioDefault1">
+                Homme
+              </label>
+            </div>
+            <div class="">
+              <input class="form-check-input" type="radio" name="genre" value="femme" id="femme" checked required>
+              <label class="form-check-label ml-4" for="flexRadioDefault2">
+                Femme
+              </label>
+            </div>
+            </div>
+            <br>
+            <div class="butto">
+          <button type="submit" class="btn btn-success m-2" id="ajout">Ajouter</button>
+          <button type="reset" class="btn btn-danger m-2" id="annuler" >Annuler</button>
+          </div>
+        </form>
+      </div>`
+      document.getElementById('annuler').addEventListener('click',function() {
+        let form=document.getElementById('ContactForm');
+        let card=document.getElementById('card');
+        let col=document.getElementById('col');
+        let div=document.getElementById('update');
+        div.style.display=null;
+        col.style.display=null;
+        form.style.display=null;
+        card.style.display=null;
+      })
+ }
