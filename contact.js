@@ -1,4 +1,7 @@
 afficher();
+addContact();
+function addContact()
+{
 let NVContact = [];
 let id=0;
 document.getElementById('ContactForm').addEventListener("submit", function(event) {
@@ -41,6 +44,7 @@ document.getElementById('ContactForm').addEventListener("submit", function(event
 </div>`;
 resetForm();
 });
+}
 function resetForm()
 {
     document.getElementById('ContactForm').reset();
@@ -72,8 +76,8 @@ function afficher ()
                                                 <p>${contact.cin}</p>
                                                 <h6>Genre</h6>
                                                 <p>${contact.genre}</p>
-                                                <button type="submit" class="btn btn-warning m-2">Modifier</button>
-                                                <button type="reset" class="btn btn-danger m-2" onclick="deleteContact(${contact.ID})">Supprimer</button>
+                                                <button type="submit" class="btn btn-warning m-2"onclick="update(${contact.ID})">Modifier</button>
+                                                <button type="reset" class="btn btn-danger m-2"  onclick="deleteContact(${contact.ID})">Supprimer</button>
                                             </div>
                                             </div>`
              }
@@ -85,7 +89,7 @@ function deleteContact(ContactId)
 {
   Swal.fire({
     title: 'Confirmation',
-    text: 'Êtes-vous sûr de vouloir supprimer cet élément ?',
+    text: 'Êtes-vous sûr de vouloir supprimer ce contact ?',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
@@ -109,9 +113,7 @@ function deleteContact(ContactId)
              Swal.fire('Supprimé', 'L\'élément a été supprimé avec succès.', 'success');
              afficher();
         }
-    }})
-   
-   
+    }})  
 }
 function existe(id) {
     let ContactString = localStorage.getItem('contact');
@@ -137,4 +139,5 @@ function verifNom() {
     }
     return true; 
  }
+ 
  
